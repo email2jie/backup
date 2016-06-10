@@ -122,11 +122,13 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 #my alias
 stty -ixon # disable ctrl-s in vim
 alias ..='cd ..;ls'
+alias js='node'
 alias bi='bundle install'
 alias be='bundle exec'
 alias bp='vim ~/.bashrc'
 alias vp='vim ~/.vimrc'
 alias pp='vim ~/.pryrc'
+alias tp='vim ~/.tern-project'
 alias aa='cd ~/Documents/appacademy/'
 alias l='ls -laH'
 alias gs='git status'
@@ -165,7 +167,7 @@ alias rc='rails c'
 alias brake='bundle exec rake db:migrate db:test:load'
 alias names='grep -r "click_" spec/ | uniq > link_names'
 alias railspid='lsof -wni tcp:3000'
-
+alias unode='curl https://raw.githubusercontent.com/isaacs/nave/master/nave.sh | sudo bash -s -- usemain latest'
 #allows vi commands at terminal
 set -o vi 
 

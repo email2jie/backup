@@ -1,14 +1,28 @@
+"Tern
+"YCM
+
+let g:syntastic_javascript_checkers = ['eslint']
+let g:ycm_add_preview_to_completeopt=0
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
+let g:syntastic_check_on_open=1
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+highlight YcmErrorLine guibg=#3f0000
 set number
+set iskeyword-=_
 set clipboard=unnamedplus
 nnoremap <F1> <nop>
 nnoremap q: <nop>
 imap <S-Tab> <Plug>delimitMateS-Tab
+nnoremap ZQ <nop>
 nnoremap Q <nop>
 nnoremap K <nop>
 inoremap jj <Esc>
 nnoremap H {
 nnoremap L }
 set updatetime=250
+"Auto indent whole file by hitting F2
 map <F2> mzgg=G`z
 set colorcolumn=72
 set columns=80
@@ -39,14 +53,15 @@ nnoremap <M-7> 7gt
 nnoremap <M-8> 8gt
 nnoremap <M-9> 9gt
 set path=$PWD/**
-set iskeyword-=_
+
 runtime macros/matchit.vim
 set nocompatible
 if has("autocmd")
       filetype indent plugin on
 endif
-nnoremap , :call NERDComment(0,"toggle")<CR>
-vnoremap , :call NERDComment(0,"toggle")<CR>
+
+nnoremap ,, :call NERDComment(0,"toggle")<CR>
+vnoremap ,, :call NERDComment(0,"toggle")<CR>
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
@@ -54,7 +69,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
-"autocmd BufEnter,BufNew *.erb setf erb.html
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: 
 "       Amir Salihefendic
@@ -180,7 +194,7 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-colorscheme evening
+colorscheme evening 
 " set background=dark
 
 " Set extra options when running in GUI mode
