@@ -1,74 +1,3 @@
-"Tern
-"YCM
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:ycm_add_preview_to_completeopt=0
-let g:jsx_ext_required = 0 " Allow JSX in normal JS files
-let g:ycm_confirm_extra_conf=0
-set completeopt-=preview
-let g:syntastic_check_on_open=1
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-highlight YcmErrorLine guibg=#3f0000
-set number
-set iskeyword-=_
-set clipboard=unnamedplus
-nnoremap <F1> <nop>
-nnoremap q: <nop>
-imap <S-Tab> <Plug>delimitMateS-Tab
-nnoremap ZQ <nop>
-nnoremap Q <nop>
-nnoremap K <nop>
-inoremap jj <Esc>
-nnoremap H {
-nnoremap L }
-set updatetime=250
-"Auto indent whole file by hitting F2
-map <F2> mzgg=G`z
-set colorcolumn=72
-set columns=80
-execute pathogen#infect()
-syntax on
-filetype plugin indent on
-"This unsets the "last search pattern" register by hitting return
-nnoremap <CR> :noh<CR><CR>
-"navigating tabs with alt + h & l 1-9
-execute "set <M-1>=\e1"
-execute "set <M-2>=\e2"
-execute "set <M-3>=\e3"
-execute "set <M-4>=\e4"
-execute "set <M-5>=\e5"
-execute "set <M-6>=\e6"
-execute "set <M-7>=\e7"
-execute "set <M-8>=\e8"
-execute "set <M-9>=\e9"
-nnoremap <M-h> gT
-nnoremap <M-l> gt
-nnoremap <M-1> 1gt
-nnoremap <M-2> 2gt
-nnoremap <M-3> 3gt
-nnoremap <M-4> 4gt
-nnoremap <M-5> 5gt
-nnoremap <M-6> 6gt
-nnoremap <M-7> 7gt
-nnoremap <M-8> 8gt
-nnoremap <M-9> 9gt
-set path=$PWD/**
-
-runtime macros/matchit.vim
-set nocompatible
-if has("autocmd")
-      filetype indent plugin on
-endif
-
-nnoremap ,, :call NERDComment(0,"toggle")<CR>
-vnoremap ,, :call NERDComment(0,"toggle")<CR>
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: 
 "       Amir Salihefendic
@@ -231,8 +160,8 @@ set expandtab
 set smarttab
 
 " 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
+set shiftwidth=2
+set tabstop=2
 
 " Linebreak on 500 characters
 set lbr
@@ -471,3 +400,97 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""Jie's tweaks"""""""""""""""""""""""""""""""""
+"runs pathogen plugins
+execute pathogen#infect()
+"can disable plugins for troubleshooting
+let g:pathogen_disabled = ['']
+"Tern
+"YCM
+"bigfish
+"let g:syntastic_javascript_checkers = ['eslint']
+"Map F3 to change line numbers, requires numbers plugin  
+nnoremap <F3> :NumbersToggle<CR>
+set number
+""""""JSCcontextColor""""""
+"auto run :JSContextColor for all .js files
+autocmd VimEnter *.js JSContextColor
+let g:js_context_colors_usemaps=1
+let g:js_context_colors_block_scope_with_let=1
+let g:js_context_colors_highlight_function_names=1
+let g:js_context_colors_jsx=1
+
+let g:ycm_add_preview_to_completeopt=0
+let g:jsx_ext_required = 1 " Allow JSX in normal JS files
+let g:ycm_confirm_extra_conf=0
+set completeopt-=preview
+"do syntastic on file load; slows down vim startup
+"let g:syntastic_check_on_open=1
+
+"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+"highlight YcmErrorLine guibg=#3f0000
+"remove _ from vim keywords
+set iskeyword-=_
+"always copy to clipboard - require xclipboard; vim --versions
+set clipboard=unnamedplus
+"disable annoying q: and ex mode
+map q: <nop>
+nnoremap q: <nop>
+nnoremap ZQ <nop>
+nnoremap Q <nop>
+nnoremap K <nop>
+"remapping Esc key to jj 
+inoremap jj <Esc>
+"navigate between functions using shift h,l
+nnoremap H {
+nnoremap L }
+"update info displayed faster
+set updatetime=250
+"Auto indent whole file by hitting F2
+map <F2> mzgg=G`z
+"set colorcolumn=72
+"set columns=80
+"This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR><CR>
+"navigating tabs with alt + h & l 1-9
+execute "set <M-1>=\e1"
+execute "set <M-2>=\e2"
+execute "set <M-3>=\e3"
+execute "set <M-4>=\e4"
+execute "set <M-5>=\e5"
+execute "set <M-6>=\e6"
+execute "set <M-7>=\e7"
+execute "set <M-8>=\e8"
+execute "set <M-9>=\e9"
+nnoremap <M-h> gT
+nnoremap <M-l> gt
+nnoremap <M-1> 1gt
+nnoremap <M-2> 2gt
+nnoremap <M-3> 3gt
+nnoremap <M-4> 4gt
+nnoremap <M-5> 5gt
+nnoremap <M-6> 6gt
+nnoremap <M-7> 7gt
+nnoremap <M-8> 8gt
+nnoremap <M-9> 9gt
+set path=$PWD/**
+
+runtime macros/matchit.vim
+set nocompatible
+if has("autocmd")
+      filetype indent plugin on
+endif
+"toggle comment; require nerdcomment
+nnoremap ,, :call NERDComment(0,"toggle")<CR>
+vnoremap ,, :call NERDComment(0,"toggle")<CR>
+"use shift tab for navgating out of auto delimits; require delimitMate 
+imap <S-Tab> <Plug>delimitMateS-Tab
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"

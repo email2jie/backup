@@ -1,6 +1,9 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
+[ -z "$TMUX" ] && export TERM=xterm-256color
+
+
 
 # If not running interactively, don't do anything
 case $- in
@@ -189,8 +192,9 @@ gg () {
 	git add -A
 	git commit -m "$1"
 	git push
-    git log
+  git log
 }
+
 
 aae () {
     aa
