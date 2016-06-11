@@ -214,3 +214,12 @@ guardr () {
     bundle install --without sql
     bundle exec guard
 }
+
+
+gu () {
+  cd
+  git add -u
+  git commit -m "$1"
+  git push
+  git log
+}
