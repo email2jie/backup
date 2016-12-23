@@ -123,8 +123,8 @@ set tm=500
 " Enable syntax highlighting
 syntax enable
 
-colorscheme evening 
-" set background=dark
+colorscheme chroma 
+ set background=dark
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -410,13 +410,13 @@ let g:pathogen_disabled = ['']
 "Tern
 "YCM
 "bigfish
-"let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_checkers = ['eslint']
 "Map F3 to change line numbers, requires numbers plugin  
 nnoremap <F3> :NumbersToggle<CR>
 set number
 """"""JSCcontextColor""""""
 "auto run :JSContextColor for all .js files
-autocmd VimEnter *.js JSContextColor
+"autocmd VimEnter *.js JSContextColor
 let g:js_context_colors_usemaps=1
 let g:js_context_colors_block_scope_with_let=1
 let g:js_context_colors_highlight_function_names=1
@@ -494,3 +494,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+map <C-n> :NERDTree belle
+let g:ctrlp_working_path_mode = 'c'

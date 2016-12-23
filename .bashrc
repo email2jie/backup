@@ -126,6 +126,8 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 stty -ixon # disable ctrl-s in vim
 alias ..='cd ..;ls'
 alias js='node'
+alias nd='node-debug'
+alias install='sudo apt-get install'
 alias bi='bundle install'
 alias be='bundle exec'
 alias bp='vim ~/.bashrc'
@@ -136,7 +138,13 @@ alias aa='cd ~/Documents/appacademy/'
 alias l='ls -laH'
 alias gs='git status'
 alias gl='git log'
+alias gf='git diff'
 alias gc='git clone'
+alias gh='git push heroku'
+alias hm='heroku run rake db:migrate'
+alias hs='heroku run rake db:seed'
+alias hr='heroku run rake db:reset'
+alias sd='rake db:seed:dump APPEAD=true'
 alias bes='bundle exec rspec'
 alias besf='bundle exec rspec --fail-fast'
 alias f='find -name'
@@ -144,17 +152,19 @@ alias rbp='source ~/.bashrc'
 alias v='vim'
 alias rm='rm -rf'
 alias open='xdg-open'
-alias rs='vim ~/.vim/bundle/vim-snippets/snippets/ruby.snippets'
-alias snippets='cd ~/.vim/bundle/vim-snippets/snippets/'
+alias rs='vim ~/.vim/bundle/vim-snippets/UltiSnips/ruby.snippets'
+alias jss='vim ~/.vim/bundle/vim-snippets/UltiSnips/javascript.snippets'
+alias snippets='cd ~/.vim/bundle/vim-snippets/UltiSnips/'
 alias n='nautilus .'
 alias cp='cp -r'
 alias b='cd -'
-alias c='clear'
+alias cl='clear'
 alias h='history'
 alias j='jobs -l'
 alias fping='ping -c 100 -s.2'
+alias rs='open ~/Documents/OSBuddy.jar'
 alias ping='ping -c 5'
-alias update='sudo apt-get update && sudo apt-get upgrade'
+alias pingt='ping'
 alias top='atop'
 alias p='cd ~/.vim/bundle'
 #rails development
@@ -163,20 +173,43 @@ alias migrate='rake db:migrate'
 alias create='rake db:create'
 alias model='rails g model'
 alias controller='rails g controller'
+alias killkodi='pkill -9 kodi.bin'
 alias destroy='rails destroy'
 alias mailer='rails g mailer'
 alias s='rails s'
 alias rc='rails c'
 alias brake='bundle exec rake db:migrate db:test:load'
-alias names='grep -r "click_" spec/ | uniq > link_names'
 alias railspid='lsof -wni tcp:3000'
+#update node
 alias unode='curl https://raw.githubusercontent.com/isaacs/nave/master/nave.sh | sudo bash -s -- usemain latest'
 #allows vi commands at terminal
-set -o vi 
+#set -o vi 
+alias aws1='ssh -i ~/Documents/Bellenista/AWS/Key\ Pairs/bellenista-key-pair-westcali.pem deploy@ec2-54-153-42-235.us-west-1.compute.amazonaws.com'
+alias aws3='ssh -i ~/Documents/Bellenista/AWS/Key\ Pairs/bellenista-key-pair-westcali.pem deploy@ec2-54-183-56-1.us-west-1.compute.amazonaws.com'
+alias aws='ssh -i ~/Documents/Bellenista/AWS/Key\ Pairs/bellenista-key-pair-westcali.pem deploy@ec2-52-53-254-165.us-west-1.compute.amazonaws.com'
+alias pihole='ssh 192.168.1.50'
+alias raspi='ssh 192.168.1.51'
+alias update='sudo apt-get -y update;sudo apt-get -y upgrade'
 
+bind '"\e[5": history-search-backward'
+bind '"\e[6": history-search-forward'
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 #scripts
 
+pop () {
+  cd ~/Documents/popcorntime/popcorn-desktop
+  gulp run
+}
 
+uninstall () {
+  sudo apt-get remove $1
+}
+
+belle () {
+  cd ~/Documents/Bellenista/BelleProject/BelleApp
+  rails s
+}
 mkcd () {
   case "$1" in
     */..|*/../) cd -- "$1";; # that doesn't make any sense unless the directory already exists
@@ -195,6 +228,11 @@ gg () {
   git log
 }
 
+#alias wp='webpack --progress --colors --watch ./root.js bundle.js'
+
+wp () {
+  webpack --progress --colors --watch ${1:-root.js} bundle.js
+}
 
 aae () {
     aa
@@ -223,3 +261,22 @@ gu () {
   git push
   git log
 }
+
+react () {
+  react new $1
+  cd $1
+  cp ~/Documents/appacademy/React/.gitignore .
+}
+
+c () {
+  cd $1
+  ls
+}
+
+
+export PATH="/home/jie/.linuxbrew/bin:$PATH"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
